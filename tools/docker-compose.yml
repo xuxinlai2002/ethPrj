@@ -13,7 +13,8 @@ services:
       - /bin/bash
       - -c
       - |
-        cd && source .profile && cd ethPrj/tools
-        ./gen.sh
+        cd && source .profile
+        cd ethPrj && git pull 
+        cd tools && ./gen.sh
     volumes:
       - ~/data:/home/deploy/ethPrj/chain/data
