@@ -7,8 +7,9 @@ if (typeof web3Obj !== 'undefined') {
     web3Obj = new Web3(web3.currentProvider);
 } else {
     // set the provider you want from Web3.providers
-    web3Obj = new Web3(new Web3.providers.HttpProvider("http://127.0.0.1:7545"));
-    //web3Obj = new Web3(new Web3.providers.WebsocketProvider("ws://127.0.0.1:7545"));
+    web3Obj = new Web3(new Web3.providers.HttpProvider("http://0.0.0.0:8545"));
+    //web3Obj = new Web3(new Web3.providers.HttpProvider("http://127.0.0.1:7545"));
+    //web3Obj = new Web3(new Web3.providers.WebsocketProvider("ws://127.0.0.1:8545"));
 }
 
 // web3Obj.eth.getAccounts().then(function (value) { 
@@ -18,7 +19,7 @@ if (typeof web3Obj !== 'undefined') {
 let data = fs.readFileSync('./MetaCoin.sol');
 let output = solc.compile(data.toString(), 1);
 
-let bytecode = output.contracts[':MetaCoin'].bytecode;
+let bytecode = "0x" + output.contracts[':MetaCoin'].bytecode;
 console.log("----------bytecode start ----------")
 console.log(bytecode)
 console.log("----------bytecode end ----------")
@@ -29,7 +30,7 @@ console.log(abi)
 
 let myContract = new web3Obj.eth.Contract(JSON.parse(abi), '', {
     defaultAccount: '0xDED1626C15F18bb35048BCf1068158634F628201', // default from address
-    defaultGasPrice: '20000000000' // default gas price in wei, 20 gwei in this case
+    defaultGasPrice: '20000' // default gas price in wei, 20 gwei in this case
 });
 
 myContract.deploy({

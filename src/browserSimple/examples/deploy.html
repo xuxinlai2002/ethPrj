@@ -34,7 +34,10 @@
     let selectedAccountIndex = 0; // Using the first account in the list
 
     var web3Obj = new Web3(new Web3.providers.HttpProvider(
-        "http://127.0.0.1:7545"));
+        "http://localhost:8545"));
+
+        // var web3Obj = new Web3(new Web3.providers.HttpProvider(
+        // "http://0.0.0.0:8545"));    
 
     let gasPrice = web3Obj.eth.gasPrice;
     let gasPriceHex = web3Obj.toHex(gasPrice);

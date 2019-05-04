@@ -20,3 +20,6 @@ geth --datadir data --nodiscover console
 eth.getBalance(eth.accounts[0])
 eth.getBalance(eth.accounts[1])
 
+
+personal.unlockAccount(eth.accounts[0],"123456",0)
+eth.sendTransaction({from:eth.accounts[0],to:"0xDED1626C15F18bb35048BCf1068158634F628201",value:web3.toWei(2,"ether")})
