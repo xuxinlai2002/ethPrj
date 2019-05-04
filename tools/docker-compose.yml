@@ -1,0 +1,19 @@
+version: '2'
+
+services:
+  gnode:
+    container_name: gnode
+    image: xuxinlai2002/geth:v0.2
+    expose:
+      - 8545
+    ports:
+      - 8545:8545
+    user: deploy  
+    command: 
+      - /bin/bash
+      - -c
+      - |
+        cd && source .profile && cd ethPrj/tools
+        ./gen.sh
+    volumes:
+      - ~/data:/home/deploy/ethPrj/chain/data
